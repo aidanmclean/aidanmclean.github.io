@@ -35,8 +35,12 @@
   function setTheme(t, announce) {
     root.dataset.theme = t;
     try { localStorage.setItem('theme', t); } catch (e) {}
+    // Read the palette back out of CSS so this never drifts from site.css.
     const meta = $('meta[name="theme-color"]');
-    if (meta) meta.content = t === 'light' ? '#f8f6f2' : '#100f0d';
+    if (meta) {
+      const bg = getComputedStyle(root).getPropertyValue('--bg').trim();
+      if (bg) meta.content = bg;
+    }
     if (announce) toast(t === 'light' ? 'Light theme' : 'Dark theme');
   }
 

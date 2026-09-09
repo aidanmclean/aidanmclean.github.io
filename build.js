@@ -387,7 +387,7 @@ function main() {
     .slice(0, 300);
 
   const favicon = encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#e2622a"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">${d.basics.initials}</text></svg>`
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#9c5f2b"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">${d.basics.initials}</text></svg>`
   );
 
   const ogImage = d.basics.photo

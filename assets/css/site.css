@@ -27,36 +27,36 @@
 /* dark is the default */
 :root,
 [data-theme="dark"] {
-  --bg: #100f0d;
-  --bg-2: #17151300;
-  --card: #171512;
-  --ink: #ece7df;
-  --ink-2: #a49d92;
-  --ink-3: #6d675e;
-  --line: #2a2622;
-  --line-2: #3b3630;
-  --accent: #ff8b4d;
-  --accent-soft: rgba(255, 139, 77, 0.13);
-  --accent-ink: #1c0e05;
-  --grid: rgba(255, 255, 255, 0.035);
-  --glow: rgba(255, 139, 77, 0.09);
+  --bg: #13100b;
+  --bg-2: #1c181100;
+  --card: #1c1811;
+  --ink: #ebe2d4;
+  --ink-2: #a89a85;
+  --ink-3: #726757;
+  --line: #2d2720;
+  --line-2: #40382d;
+  --accent: #d59a6a;
+  --accent-soft: rgba(213, 154, 106, 0.14);
+  --accent-ink: #1d1409;
+  --grid: rgba(232, 208, 176, 0.04);
+  --glow: rgba(213, 154, 106, 0.1);
   --shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
 }
 
 [data-theme="light"] {
-  --bg: #f8f6f2;
-  --card: #fffefc;
-  --ink: #1a1714;
-  --ink-2: #57514a;
-  --ink-3: #8a837a;
-  --line: #e3ded4;
-  --line-2: #cec7ba;
-  --accent: #c2521a;
-  --accent-soft: rgba(194, 82, 26, 0.09);
-  --accent-ink: #fffaf6;
-  --grid: rgba(0, 0, 0, 0.032);
-  --glow: rgba(194, 82, 26, 0.07);
-  --shadow: 0 24px 60px -22px rgba(60, 45, 30, 0.28);
+  --bg: #f7f2e8;
+  --card: #fdfaf3;
+  --ink: #1e1811;
+  --ink-2: #5b5144;
+  --ink-3: #8c8070;
+  --line: #e6dccb;
+  --line-2: #d0c3ac;
+  --accent: #96572a;
+  --accent-soft: rgba(150, 87, 42, 0.1);
+  --accent-ink: #fdf8f1;
+  --grid: rgba(90, 60, 25, 0.045);
+  --glow: rgba(150, 87, 42, 0.08);
+  --shadow: 0 24px 60px -22px rgba(70, 50, 25, 0.28);
 }
 
 /* ----------------------------------------------------------------- 2. base */
@@ -335,13 +335,13 @@ a { color: inherit; text-decoration: none; }
 .status .dot {
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: #4ec26f;
-  box-shadow: 0 0 0 0 rgba(78, 194, 111, 0.55);
+  background: #7d9e5c;
+  box-shadow: 0 0 0 0 rgba(125, 158, 92, 0.55);
   animation: pulse 2.4s var(--ease) infinite;
 }
 @keyframes pulse {
-  70% { box-shadow: 0 0 0 7px rgba(78, 194, 111, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(78, 194, 111, 0); }
+  70% { box-shadow: 0 0 0 7px rgba(125, 158, 92, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(125, 158, 92, 0); }
 }
 
 .hero h1 {

@@ -4,7 +4,7 @@
   "site": {
     "url": "https://aidanmclean.github.io",
     "repo": "https://github.com/aidanmclean/aidanmclean.github.io",
-    "themeColor": "#0f0e0d",
+    "themeColor": "#13100b",
     "lastUpdated": "September 2026"
   },
 
@@ -16,16 +16,16 @@
     "email": "aidanmclean7030@yahoo.com",
     "phone": "",
     "status": "Research Assistant @ McMaster Faculty of Engineering",
-    "lede": "I'm a full-stack developer. I build the schema, the API, the interface on top of it, and the server it runs on. Right now that means a research platform at McMaster where researchers benchmark AI battery models, and a storefront and admin console for an independent record label.",
+    "lede": "I'm a full-stack developer. I build apps from front to back, top to bottom: the schema, the API, the interface on top of it, and the server it runs on. Right now that means a research platform at McMaster where researchers benchmark AI battery models, and a storefront and admin console for an independent record label.",
     "photo": "assets/files/headshot.jpeg",
     "photoAlt": "Aidan McLean",
     "resumePdf": "assets/files/Aidan-McLean-Resume.pdf",
-    "contactNote": "Open to hearing about backend, full-stack, and infrastructure work. The fastest way to reach me is email.",
+    "contactNote": "Open to hearing about software development & IT work. The fastest way to reach me is email.",
     "spec": [
       { "key": "Location",  "value": "Keswick, ON" },
-      { "key": "Education", "value": "McMaster BASc, Honours CS" },
+      { "key": "Education", "value": "McMaster BASc, Honours Computer Science" },
       { "key": "Graduated", "value": "April 2026" },
-      { "key": "Focus",     "value": "Full-stack · Infrastructure" },
+      { "key": "Focus",     "value": "Full-stack · Infrastructure · Backend" },
       { "key": "Stack",     "value": "TypeScript · Node · React · Postgres" }
     ],
     "profiles": [
