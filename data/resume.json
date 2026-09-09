@@ -101,10 +101,9 @@
       "org": "Endnote Records",
       "year": "2026",
       "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "SQL", "Drizzle ORM", "Stripe", "Turborepo", "better-auth", "Zod", "Git", "GitHub Actions"],
-      "summary": "A production storefront, admin console, and in-person point-of-sale for an independent record label, with dual-currency pricing, idempotent order processing, role-based admin access, and per-currency reporting.",
+      "summary": "A production storefront, admin console, and in-person point-of-sale for an independent record label, with dual-currency pricing, idempotent order processing, content management, role-based admin access, and per-currency reporting.",
       "detail": "A TypeScript monorepo built with Turborepo and pnpm workspaces: two Next.js 16 / React 19 applications over four shared internal packages, about 35K lines across 36 Postgres tables and 24 versioned migrations. Prices are set per currency instead of being converted, so USD and CAD are separate columns resolved through a three-level chain, and every subsystem that reads a price has to track which currency it came from.",
       "highlights": [
-        "Found and fixed a silent pricing bug. SQL min() ignores NULLs, so incomplete price rows produced plausible but unbuyable prices. Added a bool_and completeness guard in both the query layer and the admin form.",
         "Built currency switching with no layout shift that keeps Incremental Static Regeneration working. Both prices render server-side, and a pre-paint inline script plus CSS picks one, so product pages stay statically generated while each visitor sees their own currency.",
         "Made Stripe Checkout idempotent end to end, with signature-verified webhooks, a reconciliation cron to catch lost events, and inventory reserved at session creation with automatic sweeping of abandoned checkouts.",
         "Built a channel- and currency-aware analytics layer that never sums across currencies, uses a fixed default so figures do not change between page loads, and labels excluded orders instead of reporting a partial number as a total.",
@@ -120,9 +119,15 @@
       "role": "Architect & developer",
       "org": "McMaster Faculty of Engineering",
       "year": "2026",
-      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "Drizzle ORM", "Docker"],
+      "tech": ["TypeScript", "Python", "Node.js", "Express", "React", "PostgreSQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "PM2", "SSL/TLS", "better-auth"],
       "summary": "A research platform where teams upload AI battery State-of-Charge models and have them scored against a shared benchmark. Submissions are graded on 18+ metrics and ranked against every other entry.",
-      "detail": "Every submission is arbitrary researcher code, so each one runs in its own Docker container through an asynchronous evaluation pipeline. Multiple models score at the same time without interfering with each other, and results come back through an in-app notification system and email. Auth, model metadata, and evaluation history live in a PostgreSQL schema I designed with Drizzle ORM, behind cookie-based sessions, rate limiting, and role-based access control.",
+      "highlights": [
+        "Architected and developed a Node.js/Express (TypeScript) REST API serving a full-stack platform for AI model submission, automated sandboxed evaluation, and competitive leaderboard ranking across 18+ battery performance metrics.",
+        "Implemented cookie-based session authentication with rate limiting, email verification, and role-based access control middleware enforcing ownership-gated authorization across all protected API routes.",
+        "Designed a PostgreSQL schema spanning authentication, model metadata, file storage, and evaluation results, integrating BetterAuth for secure session and credential management.",
+        "Built an asynchronous Docker-based evaluation pipeline that spawns isolated containers per submission, captures structured scoring output, and delivers results to users via automated email notifications.",
+        "Deployed and maintained the production environment with Docker Compose, NGINX, PM2, and SSL/TLS, with structured logging and secure file handling including upload validation and path traversal prevention."
+      ],
       "links": []
     }
   ],
