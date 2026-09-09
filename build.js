@@ -124,13 +124,23 @@ function hero(d) {
         ${links}
         </div>
       </div>
-      <aside class="spec reveal" aria-label="At a glance">
-        <div class="spec-bar mono"><span>at a glance</span><span class="spec-dots" aria-hidden="true"></span></div>
-        <dl class="spec-list mono">
-          ${b.spec
-            .map((r) => `<div class="spec-row"><dt>${esc(r.key)}</dt><dd>${esc(r.value)}</dd></div>`)
-            .join('\n          ')}
-        </dl>
+      <aside class="hero-side reveal">
+        ${
+          b.photo
+            ? `<figure class="portrait">
+          <img src="${esc(b.photo)}" alt="${esc(b.photoAlt || b.name)}" width="1098" height="1373"
+               decoding="async" fetchpriority="high">
+        </figure>`
+            : ''
+        }
+        <div class="spec" aria-label="At a glance">
+          <div class="spec-bar mono"><span>at a glance</span><span class="spec-dots" aria-hidden="true"></span></div>
+          <dl class="spec-list mono">
+            ${b.spec
+              .map((r) => `<div class="spec-row"><dt>${esc(r.key)}</dt><dd>${esc(r.value)}</dd></div>`)
+              .join('\n            ')}
+          </dl>
+        </div>
       </aside>
     </div>
   </section>`;
@@ -360,6 +370,7 @@ function jsonLd(d) {
     jobTitle: b.label,
     email: `mailto:${b.email}`,
     url: d.site.url,
+    ...(b.photo ? { image: `${d.site.url.replace(/\/$/, '')}/${b.photo}` } : {}),
     address: { '@type': 'PostalAddress', addressLocality: b.location },
     sameAs: b.profiles.map((p) => p.url),
     alumniOf: d.education.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.institution })),
@@ -379,6 +390,10 @@ function main() {
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#e2622a"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">${d.basics.initials}</text></svg>`
   );
 
+  const ogImage = d.basics.photo
+    ? `<meta property="og:image" content="${esc(d.site.url.replace(/\/$/, ''))}/${esc(d.basics.photo)}">`
+    : '';
+
   const content = [hero(d), experience(d), projects(d), toolkit(d), education(d), contact(d)]
     .filter(Boolean)
     .join('\n\n');
@@ -390,6 +405,7 @@ function main() {
     .replace(/{{THEME_COLOR}}/g, esc(d.site.themeColor))
     .replace(/{{SITE_URL}}/g, esc(d.site.url))
     .replace(/{{FAVICON}}/g, favicon)
+    .replace('{{OG_IMAGE}}', ogImage)
     .replace('{{JSONLD}}', jsonLd(d))
     .replace('{{HEADER}}', header(d))
     .replace('{{CONTENT}}', content)

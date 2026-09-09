@@ -53,6 +53,7 @@ filename, update `basics.resumePdf` in `data/resume.json` to match.
 | `assets/css/site.css` | All styling, including the print stylesheet. |
 | `assets/js/site.js` | Theme, scroll-spy, tag filter, command palette. |
 | `assets/files/*.pdf` | The downloadable résumé. |
+| `assets/files/headshot.jpeg` | Hero portrait, set via `basics.photo`. |
 | `index.html` | **Generated. Do not hand-edit.** Committed so Pages can serve it directly. |
 | `dev.js` | Local preview server with rebuild-on-save. |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is instead of running Jekyll. |
@@ -64,6 +65,9 @@ filename, update `basics.resumePdf` in `data/resume.json` to match.
   status pill, the PDF path, the "at a glance" rows (`spec`), and social profiles.
   `phone` is intentionally left blank; fill it in and a Phone row appears under Contact.
   `contactNote` is the sentence above the contact list.
+  `photo` and `photoAlt` are optional: set `photo` to an image path and it appears
+  in the hero above the spec card and as the link-preview image. Remove the field
+  and the hero renders without it.
 - **`work`**: one object per role, newest first. `highlights` are the bullet points.
   `tech` drives the clickable tags. Use `dateNote` to override the rendered date range
   (that's how the split 2022 / 2024 role shows both stints on one line).

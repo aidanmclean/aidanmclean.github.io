@@ -17,6 +17,8 @@
     "phone": "",
     "status": "Research Assistant @ McMaster Faculty of Engineering",
     "lede": "I'm a full-stack developer. I build the schema, the API, the interface on top of it, and the server it runs on. Right now that means a research platform at McMaster where researchers benchmark AI battery models, and a storefront and admin console for an independent record label.",
+    "photo": "assets/files/headshot.jpeg",
+    "photoAlt": "Aidan McLean",
     "resumePdf": "assets/files/Aidan-McLean-Resume.pdf",
     "contactNote": "Open to hearing about backend, full-stack, and infrastructure work. The fastest way to reach me is email.",
     "spec": [

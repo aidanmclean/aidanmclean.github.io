@@ -377,7 +377,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius);
   background: color-mix(in srgb, var(--card) 70%, transparent);
   overflow: hidden;
-  margin-top: 0.4rem;
 }
 .spec-bar {
   display: flex;
@@ -886,4 +885,45 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
   .chip { border-color: #bbb; }
   a { color: #000; }
   .wrap { max-width: none; padding: 0; }
+}
+
+/* ------------------------------------------------------------- 18. portrait */
+
+.hero-side {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.portrait {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+  line-height: 0;
+}
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Square crop biased upward: the face sits in the top half of the frame. */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 50% 15%;
+}
+
+@media (max-width: 900px) {
+  .hero-side { max-width: 420px; }
+  .portrait { max-width: 280px; }
+}
+
+/* Keep the square crop on small screens; a landscape crop of a portrait
+   photo cuts the top of the head off. Cap the width instead. */
+@media (max-width: 640px) {
+  .portrait { max-width: 240px; }
+}
+
+@media print {
+  .portrait { display: none !important; }
 }
