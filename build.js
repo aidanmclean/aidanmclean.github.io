@@ -175,15 +175,29 @@ function projects(d) {
             `<a class="plink mono" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ${ICONS.arrow}</a>`
         )
         .join('');
+      // Source order is head -> prose -> tags; on wide screens the tags are
+      // placed into a left rail by grid, so the reading order stays sensible.
       return `      <article class="project filterable" data-tech="${esc(techAttr)}">
         <div class="project-head">
           <h3>${esc(p.name)}</h3>
           <p class="mono project-meta">${[p.role, p.org, p.year].filter(Boolean).map(esc).join(' <span class="sep">·</span> ')}</p>
         </div>
-        <p class="project-summary">${esc(p.summary)}</p>
-        ${p.detail ? `<p class="project-detail">${esc(p.detail)}</p>` : ''}
-        ${chips(p.tech, { small: true })}
-        ${links ? `<div class="plinks">${links}</div>` : ''}
+        <div class="project-main">
+          <p class="project-summary">${esc(p.summary)}</p>
+          ${p.detail ? `<p class="project-detail">${esc(p.detail)}</p>` : ''}
+          ${
+            p.highlights && p.highlights.length
+              ? `<ul class="bullets project-bullets">
+            ${p.highlights.map((h) => `<li>${esc(h)}</li>`).join('\n            ')}
+          </ul>`
+              : ''
+          }
+          ${links ? `<div class="plinks">${links}</div>` : ''}
+        </div>
+        <div class="project-side">
+          <p class="mono micro-label">Built with</p>
+          ${chips(p.tech, { small: true })}
+        </div>
       </article>`;
     })
     .join('\n');

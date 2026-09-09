@@ -567,11 +567,26 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
     filter 0.35s var(--ease);
 }
 .project:hover { border-color: var(--line-2); }
-.project-head { margin-bottom: 1rem; }
+.project-head { margin-bottom: 1.5rem; }
 .project h3 { font-size: var(--step-1); margin-bottom: 0.35rem; }
 .project-meta { color: var(--ink-3); }
 .project-summary { max-width: 72ch; margin-bottom: 0.85rem; text-wrap: pretty; }
 .project-detail { max-width: 72ch; color: var(--ink-2); margin-bottom: 1.25rem; text-wrap: pretty; }
+.project-side .micro-label { margin-top: 0; }
+
+/* Wide screens: tags move into a left rail so the card matches the timeline
+   rhythm instead of leaving the right half of the border empty. */
+@media (min-width: 860px) {
+  .project { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 0 2.25rem; }
+  .project-head { grid-column: 1 / -1; }
+  .project-side { grid-column: 1; grid-row: 2; }
+  .project-main { grid-column: 2; grid-row: 2; }
+  .project-side .chips { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 859px) {
+  .project-side { margin-top: 1.5rem; }
+}
 .plinks { display: flex; gap: 1rem; margin-top: 1rem; }
 .plink { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--accent); }
 .plink svg { width: 12px; height: 12px; fill: currentColor; }

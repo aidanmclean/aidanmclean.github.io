@@ -39,7 +39,7 @@
       "location": "Hamilton, ON",
       "start": "May 2026",
       "end": "Present",
-      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "Drizzle ORM", "Docker", "NGINX", "Linux", "PM2"],
+      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git"],
       "highlights": [
         "Architected and developed a full-stack research platform (Node.js/Express, TypeScript, React, PostgreSQL) that lets researchers submit and benchmark AI battery State-of-Charge models against one another, ranking submissions across 18+ evaluation metrics.",
         "Delivered features end to end across the stack, from REST API endpoints to the React components consuming them, including model submission workflows, results export, an in-app notification system, and an administrative management console.",
@@ -54,7 +54,7 @@
       "location": "Newmarket, ON",
       "start": "May 2025",
       "end": "September 2025",
-      "tech": ["TypeScript", "JavaScript", "Drupal", "Azure APIM", "Power Automate", "GIS"],
+      "tech": ["TypeScript", "JavaScript", "HTML / CSS", "Drupal", "Azure APIM", "Power Automate", "GIS"],
       "highlights": [
         "Customized Drupal Webforms with JavaScript to implement dynamic form behaviour, validation, and improved user experience.",
         "Built front-end integrations with Microsoft APIM to apply business logic, route requests securely, and connect forms to backend services.",
@@ -96,8 +96,28 @@
 
   "projects": [
     {
+      "name": "Record Label E-Commerce Platform",
+      "role": "Architect & developer",
+      "org": "Endnote Records",
+      "year": "2026",
+      "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "SQL", "Drizzle ORM", "Stripe", "Turborepo", "better-auth", "Zod", "Git", "GitHub Actions"],
+      "summary": "A production storefront, admin console, and in-person point-of-sale for an independent record label: dual-currency pricing, idempotent order processing, role-gated administration, and analytics that refuse to lie.",
+      "detail": "A TypeScript monorepo on Turborepo and pnpm workspaces — two Next.js 16 / React 19 applications over four shared internal packages, around 35K lines against 36 Postgres tables and 24 versioned migrations. The organizing constraint is currency: the label prices records per currency rather than converting, so USD and CAD are independent columns resolved through a three-level chain, and almost every subsystem downstream has to stay honest about which currency it is talking about.",
+      "highlights": [
+        "Caught a class of silent pricing bug where SQL min() ignores NULLs and produced plausible but unbuyable prices; closed it with a bool_and completeness guard enforced in both the query layer and the admin form.",
+        "Built zero-CLS currency switching that preserves Incremental Static Regeneration — both prices are dual-rendered server-side and one is selected by a pre-paint inline script plus CSS, so product pages stay statically generated while serving per-visitor currency.",
+        "Made Stripe Checkout idempotent end to end: signature-verified webhooks, a reconciliation cron as a backstop for lost events, and inventory reserved at session creation with automatic sweeping of abandoned checkouts.",
+        "Built a channel- and currency-aware analytics layer that refuses to sum across currencies, pins a deterministic default so figures never silently change between page loads, and labels excluded orders rather than reporting a partial number as a total.",
+        "Shipped a mobile-first point-of-sale for live shows: offline-style cash and e-transfer sales, oversell-tolerant stock decrements through an inventory ledger, per-currency line re-pricing, and cost snapshots taken in the sale's own currency so margin stays accurate.",
+        "Enforced role-based access control on better-auth with granular permission statements across three roles, checked on every admin route and server action and backed by an append-only audit log on all money, inventory, and user mutations.",
+        "Hardened every public trust boundary: Zod validation before any database access, IP-keyed rate limiting on unauthenticated endpoints, honeypot bot filtering, parameterized queries, CSP headers, and generic client errors with server-side-only detail.",
+        "Established the release workflow after a schema-lag outage: migration-first deploy sequencing, GitHub Actions applying migrations to Neon on merge, and a typecheck, lint, test, and build gate across all 16 workspace tasks."
+      ],
+      "links": []
+    },
+    {
       "name": "SoC Model Benchmarking Platform",
-      "role": "Architect & sole developer",
+      "role": "Architect & developer",
       "org": "McMaster Faculty of Engineering",
       "year": "2026",
       "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "Drizzle ORM", "Docker"],
@@ -109,9 +129,9 @@
 
   "skills": [
     { "group": "Languages",      "items": ["TypeScript", "JavaScript", "Python", "Java", "SQL", "C", "Haskell", "PowerShell"] },
-    { "group": "Backend & Data", "items": ["Node.js", "Express", "PostgreSQL", "Drizzle ORM", "REST APIs"] },
-    { "group": "Frontend",       "items": ["React", "HTML / CSS", "Drupal"] },
-    { "group": "Infrastructure", "items": ["Docker", "Linux", "NGINX", "PM2", "Git", "OpenStack", "SSL/TLS", "Azure APIM"] }
+    { "group": "Backend & Data", "items": ["Node.js", "Express", "PostgreSQL", "Drizzle ORM", "REST APIs", "Stripe", "better-auth", "Zod"] },
+    { "group": "Frontend",       "items": ["React", "Next.js", "HTML / CSS", "Drupal"] },
+    { "group": "Infrastructure", "items": ["Docker", "Linux", "NGINX", "PM2", "Git", "GitHub Actions", "Turborepo", "OpenStack", "SSL/TLS", "Azure APIM"] }
   ],
 
   "education": [
