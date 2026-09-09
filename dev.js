@@ -74,4 +74,4 @@ http
       res.end(buf);
     });
   })
-  .listen(PORT, () => console.log(`\n  preview  ->  http://localhost:${PORT}\n  watching data/ and templates/ — edit, save, refresh\n`));
+  .listen(PORT, () => console.log(`\n  preview  ->  http://localhost:${PORT}\n  watching data/ and templates/ - edit, save, refresh\n`));

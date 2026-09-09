@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * build.js — renders index.html from data/resume.json + templates/page.html
+ * build.js - renders index.html from data/resume.json + templates/page.html
  *
  * No dependencies. Run `node build.js` after editing data/resume.json.
  */
@@ -26,7 +26,7 @@ const esc = (s) =>
 const slug = (s) =>
   String(s).toLowerCase().replace(/\+/g, 'p').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-const dateRange = (job) => job.dateNote || `${job.start} — ${job.end}`;
+const dateRange = (job) => job.dateNote || `${job.start} - ${job.end}`;
 
 /* ----------------------------------------------------------------- pieces */
 
@@ -236,7 +236,7 @@ function education(d) {
   const items = d.education
     .map(
       (e) => `      <article class="edu">
-        <div class="job-when mono"><span class="tick" aria-hidden="true"></span>${esc(e.start)} — ${esc(e.end)}</div>
+        <div class="job-when mono"><span class="tick" aria-hidden="true"></span>${esc(e.start)} - ${esc(e.end)}</div>
         <div class="job-body">
           <h3 class="job-role">${esc(e.institution)}</h3>
           <p class="job-org mono">${esc(e.studyType)} <span class="sep">·</span> ${esc(e.location)}</p>
@@ -317,10 +317,10 @@ function palette(d) {
     { id: 'go-edu', label: 'Education', kind: 'Navigate', act: 'scroll', arg: '#education' },
     { id: 'go-contact', label: 'Contact', kind: 'Navigate', act: 'scroll', arg: '#contact' },
     { id: 'dl', label: 'Download résumé (PDF)', kind: 'Action', act: 'open', arg: b.resumePdf },
-    { id: 'mail', label: `Email — ${b.email}`, kind: 'Action', act: 'copy', arg: b.email },
+    { id: 'mail', label: `Email: ${b.email}`, kind: 'Action', act: 'copy', arg: b.email },
     ...b.profiles.map((p) => ({
       id: 'p-' + slug(p.network),
-      label: `${p.network} — ${p.handle}`,
+      label: `${p.network}: ${p.handle}`,
       kind: 'Link',
       act: 'open',
       arg: p.url,
@@ -371,7 +371,7 @@ function main() {
   const d = JSON.parse(fs.readFileSync(DATA, 'utf8'));
   const tpl = fs.readFileSync(TPL, 'utf8');
 
-  const description = `${d.basics.name} — ${d.basics.label} in ${d.basics.location}. ${d.basics.lede}`
+  const description = `${d.basics.name}, ${d.basics.label} in ${d.basics.location}. ${d.basics.lede}`
     .replace(/\s+/g, ' ')
     .slice(0, 300);
 
@@ -398,7 +398,7 @@ function main() {
 
   fs.writeFileSync(OUT, html);
   console.log(
-    `built index.html — ${d.work.length} roles, ${(d.projects || []).length} projects, ` +
+    `built index.html: ${d.work.length} roles, ${(d.projects || []).length} projects, ` +
       `${d.skills.reduce((n, g) => n + g.items.length, 0)} skills, ${(html.length / 1024).toFixed(1)} kB`
   );
 }
