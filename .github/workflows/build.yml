@@ -1,0 +1,40 @@
+# Rebuilds index.html whenever the resume data or templates change, so the site
+# can be updated by editing data/resume.json directly on github.com.
+name: Build site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'templates/**'
+      - 'build.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Render index.html
+        run: node build.js
+
+      - name: Commit if it changed
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "index.html already up to date"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Rebuild index.html from resume.json"
+          git push

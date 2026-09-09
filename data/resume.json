@@ -1,0 +1,136 @@
+{
+  "$comment": "SINGLE SOURCE OF TRUTH. Edit this file, run `node build.js`, commit. See README.md.",
+
+  "site": {
+    "url": "https://aidanmclean.github.io",
+    "repo": "https://github.com/aidanmclean/aidanmclean.github.io",
+    "themeColor": "#0f0e0d",
+    "lastUpdated": "September 2026"
+  },
+
+  "basics": {
+    "name": "Aidan McLean",
+    "initials": "AM",
+    "label": "Full-Stack Developer",
+    "location": "Keswick, ON",
+    "email": "aidanmclean7030@yahoo.com",
+    "phone": "",
+    "status": "Research Assistant @ McMaster Faculty of Engineering",
+    "lede": "I build systems end to end — the schema, the API, the interface on top of it, and the server it runs on. Right now that's a research platform at McMaster where teams benchmark AI battery models against one another.",
+    "resumePdf": "assets/files/Aidan-McLean-Resume.pdf",
+    "contactNote": "Open to hearing about backend, full-stack, and infrastructure work. The fastest way to reach me is email.",
+    "spec": [
+      { "key": "Location",  "value": "Keswick, ON" },
+      { "key": "Education", "value": "McMaster BASc, Honours CS" },
+      { "key": "Graduated", "value": "April 2026" },
+      { "key": "Focus",     "value": "Full-stack · Infrastructure" },
+      { "key": "Stack",     "value": "TypeScript · Node · React · Postgres" }
+    ],
+    "profiles": [
+      { "network": "GitHub",   "url": "https://github.com/aidanmclean",                 "handle": "aidanmclean" },
+      { "network": "LinkedIn", "url": "https://www.linkedin.com/in/aidan-mclean-/",     "handle": "aidan-mclean-" }
+    ]
+  },
+
+  "work": [
+    {
+      "company": "McMaster University Faculty of Engineering",
+      "position": "Research Assistant / Full-Stack Developer",
+      "location": "Hamilton, ON",
+      "start": "May 2026",
+      "end": "Present",
+      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "Drizzle ORM", "Docker", "NGINX", "Linux", "PM2"],
+      "highlights": [
+        "Architected and developed a full-stack research platform (Node.js/Express, TypeScript, React, PostgreSQL) that lets researchers submit and benchmark AI battery State-of-Charge models against one another, ranking submissions across 18+ evaluation metrics.",
+        "Delivered features end to end across the stack, from REST API endpoints to the React components consuming them, including model submission workflows, results export, an in-app notification system, and an administrative management console.",
+        "Designed the PostgreSQL schema (Drizzle ORM) covering authentication, model metadata, and evaluation history, and implemented cookie-based session authentication, rate limiting, and role-based access control across all protected routes.",
+        "Built an asynchronous evaluation pipeline that runs each submission in an isolated Docker container, enabling concurrent scoring of multiple models without cross-submission interference, and delivers results through the notification system and email.",
+        "Manage deployment on an Ubuntu server (Compute Canada's OpenStack cloud), including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal; incorporate agentic AI development tools (e.g. Claude Code) into the workflow for debugging, code review, and infrastructure scripting."
+      ]
+    },
+    {
+      "company": "Regional Municipality of York",
+      "position": "Software Developer Co-op Student",
+      "location": "Newmarket, ON",
+      "start": "May 2025",
+      "end": "September 2025",
+      "tech": ["TypeScript", "JavaScript", "Drupal", "Azure APIM", "Power Automate", "GIS"],
+      "highlights": [
+        "Customized Drupal Webforms with JavaScript to implement dynamic form behaviour, validation, and improved user experience.",
+        "Built front-end integrations with Microsoft APIM to apply business logic, route requests securely, and connect forms to backend services.",
+        "Developed a TypeScript front-end application that integrated with an internal GIS map server to retrieve and visualize location-based data.",
+        "Picked up Drupal, APIM, and Power Automate on the job and put them straight to use on live production forms.",
+        "Documented APIs, workflows, and form logic so other developers could pick up the work without re-deriving it."
+      ]
+    },
+    {
+      "company": "Regional Municipality of York",
+      "position": "Customer Service System Support Analyst Student",
+      "location": "Newmarket, ON",
+      "start": "May 2022",
+      "end": "September 2024",
+      "dateNote": "May–Sep 2022 · May–Sep 2024",
+      "tech": ["Troubleshooting", "Ticketing", "Windows"],
+      "highlights": [
+        "Diagnosed and resolved technical issues for clients across a wide range of technical backgrounds, using targeted questions to narrow down root causes quickly.",
+        "Logged detailed, readable tickets that held up for whoever picked up the issue next.",
+        "Handled incoming calls, messages, and emails, prioritizing by urgency and impact.",
+        "Installed and configured software for end users across the organization."
+      ]
+    },
+    {
+      "company": "Regional Municipality of York",
+      "position": "Transit Fleet Analyst Co-op Student",
+      "location": "Richmond Hill, ON",
+      "start": "May 2023",
+      "end": "December 2023",
+      "tech": ["PowerShell", "Excel / VBA", "M5", "Citrix"],
+      "highlights": [
+        "Built Excel macros that automated recurring fleet reporting tasks, cutting down manual data entry.",
+        "Wrote and maintained a PowerShell script that ran daily fueling-data analysis, catching issues in transit fleet operations before they became bigger problems.",
+        "Supported YRT Fleet staff and end users on M5, Citrix, and Office issues.",
+        "Tested M5 v23 ahead of release, checking for regressions across core fleet workflows."
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "SoC Model Benchmarking Platform",
+      "role": "Architect & sole developer",
+      "org": "McMaster Faculty of Engineering",
+      "year": "2026",
+      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "Drizzle ORM", "Docker"],
+      "summary": "A research platform where teams upload AI battery State-of-Charge models and have them scored against a shared benchmark. Submissions are graded on 18+ metrics and ranked against every other entry.",
+      "detail": "The hard part is isolation: every submission is arbitrary researcher code, so each one runs in its own Docker container through an asynchronous evaluation pipeline. Multiple models score concurrently without interfering with each other, and results come back through an in-app notification system and email. Auth, model metadata, and evaluation history live in a PostgreSQL schema I designed with Drizzle ORM, behind cookie-based sessions, rate limiting, and role-based access control.",
+      "links": []
+    }
+  ],
+
+  "skills": [
+    { "group": "Languages",      "items": ["TypeScript", "JavaScript", "Python", "Java", "SQL", "C", "Haskell", "PowerShell"] },
+    { "group": "Backend & Data", "items": ["Node.js", "Express", "PostgreSQL", "Drizzle ORM", "REST APIs"] },
+    { "group": "Frontend",       "items": ["React", "HTML / CSS", "Drupal"] },
+    { "group": "Infrastructure", "items": ["Docker", "Linux", "NGINX", "PM2", "Git", "OpenStack", "SSL/TLS", "Azure APIM"] }
+  ],
+
+  "education": [
+    {
+      "institution": "McMaster University",
+      "studyType": "Bachelor of Applied Science, Honours Computer Science (Co-op)",
+      "location": "Hamilton, ON",
+      "start": "September 2021",
+      "end": "April 2026",
+      "coursework": [
+        "Data Structures",
+        "Algorithms Analysis",
+        "Computational Theory",
+        "Database Management",
+        "Software Design",
+        "Computer Networks",
+        "Functional Programming",
+        "Project Management"
+      ]
+    }
+  ]
+}

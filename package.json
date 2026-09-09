@@ -1,0 +1,9 @@
+{
+  "name": "aidanmclean.github.io",
+  "private": true,
+  "description": "Portfolio site. Content lives in data/resume.json; index.html is generated.",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node dev.js"
+  }
+}

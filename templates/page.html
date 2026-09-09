@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{NAME}} — {{LABEL}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="author" content="{{NAME}}">
+<meta name="theme-color" content="{{THEME_COLOR}}">
+<link rel="canonical" href="{{SITE_URL}}/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="{{NAME}} — {{LABEL}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:url" content="{{SITE_URL}}/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,{{FAVICON}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+
+<script>
+/* Set theme before first paint so there is no flash of the wrong theme. */
+(function () {
+  document.documentElement.classList.add('js');
+  try {
+    var t = localStorage.getItem('theme');
+    if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+  } catch (e) {}
+})();
+</script>
+
+<script type="application/ld+json">{{JSONLD}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><i></i></div>
+
+{{HEADER}}
+
+<main id="main">
+{{CONTENT}}
+</main>
+
+{{FOOTER}}
+{{PALETTE}}
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
