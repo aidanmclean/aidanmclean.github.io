@@ -56,13 +56,13 @@
       "location": "Hamilton, ON",
       "start": "May 2026",
       "end": "Present",
-      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git", "Docker Compose", "better-auth", "Schema design", "Session auth & RBAC"],
+      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git", "Docker Compose", "better-auth", "Schema design", "Session auth & RBAC", "Tailwind CSS", "shadcn/ui"],
       "highlights": [
-        "Architected and developed a full-stack research platform (Node.js/Express, TypeScript, React, PostgreSQL) that lets researchers submit and benchmark AI battery State-of-Charge models against one another, ranking submissions across 18+ evaluation metrics.",
-        "Delivered features end to end across the stack, from REST API endpoints to the React components consuming them, including model submission workflows, results export, an in-app notification system, and an administrative management console.",
-        "Designed the PostgreSQL schema (Drizzle ORM) covering authentication, model metadata, and evaluation history, and implemented cookie-based session authentication, rate limiting, and role-based access control across all protected routes.",
-        "Built an asynchronous evaluation pipeline that runs each submission in an isolated Docker container, enabling concurrent scoring of multiple models without cross-submission interference, and delivers results through the notification system and email.",
-        "Managed deployment on an Ubuntu server (Compute Canada's OpenStack cloud), including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal; incorporate agentic AI development tools (e.g. Claude Code) into the workflow for debugging, code review, and infrastructure scripting."
+        "Took the benchmarking platform from capstone project to production for a McMaster battery research group, deploying it on Compute Canada's OpenStack cloud with NGINX, PM2, and SSL/TLS.",
+        "Built admin tooling for the lab, including user management, bans and session revocation, private-model visibility, and submitting models on a researcher's behalf.",
+        "Added in-app and email notifications for uploads and evaluation results, and connected configurable parallelization levels to the evaluation scheduler.",
+        "Rebuilt the leaderboard, submissions, and model comparison pages on shadcn/ui, adding model size, complexity, and description columns, downloads for models and results, and public access to the leaderboard.",
+        "Used agentic AI tools such as Claude Code for debugging, code review, and infrastructure scripting."
       ]
     },
     {
