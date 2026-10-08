@@ -107,6 +107,21 @@
       </header>
       <div class="jobs">
       <article class="job filterable" data-tech="typescript node-js express react postgresql sql drizzle-orm rest-apis docker nginx linux pm2 openstack ssl-tls git docker-compose better-auth schema-design session-auth-rbac">
+        <div class="job-when mono"><span class="tick" aria-hidden="true"></span>April 2025 - Present</div>
+        <div class="job-body">
+          <h3 class="job-role">Co-Founder &amp; Technical Lead</h3>
+          <p class="job-org mono">Endnote Records <span class="sep">·</span> </p>
+          <ul class="chips chips--sm"><li><button type="button" class="chip" data-chip="typescript" aria-pressed="false"><span>TypeScript</span></button></li><li><button type="button" class="chip" data-chip="node-js" aria-pressed="false"><span>Node.js</span></button></li><li><button type="button" class="chip" data-chip="express" aria-pressed="false"><span>Express</span></button></li><li><button type="button" class="chip" data-chip="react" aria-pressed="false"><span>React</span></button></li><li><button type="button" class="chip" data-chip="postgresql" aria-pressed="false"><span>PostgreSQL</span></button></li><li><button type="button" class="chip" data-chip="sql" aria-pressed="false"><span>SQL</span></button></li><li><button type="button" class="chip" data-chip="drizzle-orm" aria-pressed="false"><span>Drizzle ORM</span></button></li><li><button type="button" class="chip" data-chip="rest-apis" aria-pressed="false"><span>REST APIs</span></button></li><li><button type="button" class="chip" data-chip="docker" aria-pressed="false"><span>Docker</span></button></li><li><button type="button" class="chip" data-chip="nginx" aria-pressed="false"><span>NGINX</span></button></li><li><button type="button" class="chip" data-chip="linux" aria-pressed="false"><span>Linux</span></button></li><li><button type="button" class="chip" data-chip="pm2" aria-pressed="false"><span>PM2</span></button></li><li><button type="button" class="chip" data-chip="openstack" aria-pressed="false"><span>OpenStack</span></button></li><li><button type="button" class="chip" data-chip="ssl-tls" aria-pressed="false"><span>SSL/TLS</span></button></li><li><button type="button" class="chip" data-chip="git" aria-pressed="false"><span>Git</span></button></li><li><button type="button" class="chip" data-chip="docker-compose" aria-pressed="false"><span>Docker Compose</span></button></li><li><button type="button" class="chip" data-chip="better-auth" aria-pressed="false"><span>better-auth</span></button></li><li><button type="button" class="chip" data-chip="schema-design" aria-pressed="false"><span>Schema design</span></button></li><li><button type="button" class="chip" data-chip="session-auth-rbac" aria-pressed="false"><span>Session auth &amp; RBAC</span></button></li></ul>
+          <ul class="bullets">
+            <li>Architected and developed a full-stack research platform (Node.js/Express, TypeScript, React, PostgreSQL) that lets researchers submit and benchmark AI battery State-of-Charge models against one another, ranking submissions across 18+ evaluation metrics.</li>
+            <li>Delivered features end to end across the stack, from REST API endpoints to the React components consuming them, including model submission workflows, results export, an in-app notification system, and an administrative management console.</li>
+            <li>Designed the PostgreSQL schema (Drizzle ORM) covering authentication, model metadata, and evaluation history, and implemented cookie-based session authentication, rate limiting, and role-based access control across all protected routes.</li>
+            <li>Built an asynchronous evaluation pipeline that runs each submission in an isolated Docker container, enabling concurrent scoring of multiple models without cross-submission interference, and delivers results through the notification system and email.</li>
+            <li>Manage deployment on an Ubuntu server (Compute Canada's OpenStack cloud), including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal; incorporate agentic AI development tools (e.g. Claude Code) into the workflow for debugging, code review, and infrastructure scripting.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job filterable" data-tech="typescript node-js express react postgresql sql drizzle-orm rest-apis docker nginx linux pm2 openstack ssl-tls git docker-compose better-auth schema-design session-auth-rbac">
         <div class="job-when mono"><span class="tick" aria-hidden="true"></span>May 2026 - Present</div>
         <div class="job-body">
           <h3 class="job-role">Research Assistant / Full-Stack Developer</h3>
@@ -206,19 +221,19 @@
         <div class="project-head">
           <div>
             <h3>SoC Model Benchmarking Platform</h3>
-            <p class="mono project-meta">Architect &amp; Developer <span class="sep">·</span> McMaster Faculty of Engineering <span class="sep">·</span> 2026</p>
+            <p class="mono project-meta">Architect &amp; Developer <span class="sep">·</span> McMaster Faculty of Engineering <span class="sep">·</span> 2025 - 2026</p>
           </div>
-          <div class="plinks"><a class="btn plink" href="https://batterysocbenchmark.ca" target="_blank" rel="noopener"><span>batterysocbenchmark.ca</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.22 11.78a.75.75 0 0 1 0-1.06l5.19-5.19H5.5a.75.75 0 0 1 0-1.5h5.75a.75.75 0 0 1 .75.75v5.75a.75.75 0 0 1-1.5 0V6.6l-5.22 5.19a.75.75 0 0 1-1.06 0Z"/></svg></a></div>
+          
         </div>
         <div class="project-main">
-          <p class="project-summary">A research platform where teams upload AI battery State-of-Charge models and have them scored against a shared benchmark. Submissions are graded on 18+ metrics and ranked against every other entry.</p>
-          
+          <p class="project-summary">A research platform where battery researchers upload State-of-Charge estimation models and have them scored and ranked on 18+ metrics: a TypeScript Express REST API and React client over PostgreSQL with Drizzle ORM, better-auth authentication, and a Python scoring tool run in Docker.</p>
+          <p class="project-detail">Designed and built as a four-person capstone project, writing most of the Express backend and much of the React client, then developed further as a research assistant at McMaster. The lab has since rebuilt the platform on a new codebase.</p>
           <ul class="bullets project-bullets">
-            <li>Architected and developed a Node.js/Express (TypeScript) REST API serving a full-stack platform for AI model submission, automated sandboxed evaluation, and competitive leaderboard ranking across 18+ battery performance metrics.</li>
-            <li>Implemented cookie-based session authentication with rate limiting, email verification, and role-based access control middleware enforcing ownership-gated authorization across all protected API routes.</li>
-            <li>Designed a PostgreSQL schema spanning authentication, model metadata, file storage, and evaluation results, integrating BetterAuth for secure session and credential management.</li>
-            <li>Built an asynchronous Docker-based evaluation pipeline that spawns isolated containers per submission, captures structured scoring output, and delivers results to users via automated email notifications.</li>
-            <li>Deployed and maintained the production environment with Docker Compose, NGINX, PM2, and SSL/TLS, with structured logging and secure file handling including upload validation and path traversal prevention.</li>
+            <li>Built an asynchronous evaluation pipeline that runs each submission in its own short-lived Docker container with a read-only filesystem and 2 GB memory, 2 CPU, and 100-process limits, parses the scorer's JSON output, and moves each model through pending, processing, ready, and error states.</li>
+            <li>Secured model uploads with Multer type and size limits, per-user storage paths, filename sanitization against path traversal, and inspection of every zip entry, rejecting nested archives and disallowed file types before anything reaches the evaluator.</li>
+            <li>Implemented authentication on better-auth with its admin, username, and bearer plugins, requiring email verification and a strong password policy, limiting sign-in attempts to 5 a minute, and enforcing roles, bans, and ownership-gated access to submissions through Express middleware.</li>
+            <li>Built admin tools to ban users and revoke their sessions, with the session cookie cache shortened to 20 seconds so revocations take effect almost immediately, and delivered results by email and live in-app notifications over Server-Sent Events.</li>
+            <li>Added structured Winston logging with daily-rotated error logs, and deployed the platform on Compute Canada's OpenStack cloud with Docker Compose, NGINX, PM2, and SSL/TLS.</li>
           </ul>
         </div>
         <div class="project-side">
