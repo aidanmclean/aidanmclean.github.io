@@ -37,16 +37,17 @@
   "work": [
     {
       "company": "Endnote Records",
+      "location": "Remote",
       "position": "Co-Founder & Technical Lead",
       "start": "April 2025",
       "end": "Present",
-      "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git", "Docker Compose", "better-auth", "Schema design", "Session auth & RBAC"],
+      "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "Stripe", "Vercel", "Neon", "GitHub Actions", "Session auth & RBAC"],
       "highlights": [
-        "Architected and developed a full-stack research platform (Node.js/Express, TypeScript, React, PostgreSQL) that lets researchers submit and benchmark AI battery State-of-Charge models against one another, ranking submissions across 18+ evaluation metrics.",
-        "Delivered features end to end across the stack, from REST API endpoints to the React components consuming them, including model submission workflows, results export, an in-app notification system, and an administrative management console.",
-        "Designed the PostgreSQL schema (Drizzle ORM) covering authentication, model metadata, and evaluation history, and implemented cookie-based session authentication, rate limiting, and role-based access control across all protected routes.",
-        "Built an asynchronous evaluation pipeline that runs each submission in an isolated Docker container, enabling concurrent scoring of multiple models without cross-submission interference, and delivers results through the notification system and email.",
-        "Manage deployment on an Ubuntu server (Compute Canada's OpenStack cloud), including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal; incorporate agentic AI development tools (e.g. Claude Code) into the workflow for debugging, code review, and infrastructure scripting."
+        "Launched a custom e-commerce platform in October 2026, designed and built solo, giving the label its own storefront and staff admin for selling merchandise both online and in person.",
+        "Took 10 orders on launch day across a catalogue of 21 products and 18 artists, through a reliable Stripe checkout with accurate inventory tracking.",
+        "Built dual-currency payment processing in CAD and USD, with calculated shipping rates and local pickup options in Ontario and Connecticut.",
+        "Secured staff access with role-based permissions, two-factor sign-in, and an audit trail of every change to money and inventory, with automated testing, deployments, and error monitoring in production.",
+        "Established the label's professional presence on its own domain with branded business and customer email, and kept its online store running for 18 months without an outage, including the move to the new platform with no interruption to sales."
       ]
     },
     {
@@ -61,7 +62,7 @@
         "Delivered features end to end across the stack, from REST API endpoints to the React components consuming them, including model submission workflows, results export, an in-app notification system, and an administrative management console.",
         "Designed the PostgreSQL schema (Drizzle ORM) covering authentication, model metadata, and evaluation history, and implemented cookie-based session authentication, rate limiting, and role-based access control across all protected routes.",
         "Built an asynchronous evaluation pipeline that runs each submission in an isolated Docker container, enabling concurrent scoring of multiple models without cross-submission interference, and delivers results through the notification system and email.",
-        "Manage deployment on an Ubuntu server (Compute Canada's OpenStack cloud), including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal; incorporate agentic AI development tools (e.g. Claude Code) into the workflow for debugging, code review, and infrastructure scripting."
+        "Managed deployment on an Ubuntu server (Compute Canada's OpenStack cloud), including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal; incorporate agentic AI development tools (e.g. Claude Code) into the workflow for debugging, code review, and infrastructure scripting."
       ]
     },
     {
