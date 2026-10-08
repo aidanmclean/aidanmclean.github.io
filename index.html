@@ -180,8 +180,11 @@
       <div class="projects">
       <article class="project filterable" data-tech="typescript next-js react postgresql sql drizzle-orm stripe turborepo better-auth zod git github-actions app-router server-components schema-design session-auth-rbac pnpm vitest neon">
         <div class="project-head">
-          <h3>Record Label E-Commerce Platform</h3>
-          <p class="mono project-meta">Architect &amp; developer <span class="sep">·</span> Endnote Records <span class="sep">·</span> 2026</p>
+          <div>
+            <h3>Record Label E-Commerce Platform</h3>
+            <p class="mono project-meta">Architect &amp; developer <span class="sep">·</span> Endnote Records <span class="sep">·</span> 2026</p>
+          </div>
+          <div class="plinks"><a class="btn plink" href="https://endnoterecords.ca" target="_blank" rel="noopener"><span>endnoterecords.ca</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.22 11.78a.75.75 0 0 1 0-1.06l5.19-5.19H5.5a.75.75 0 0 1 0-1.5h5.75a.75.75 0 0 1 .75.75v5.75a.75.75 0 0 1-1.5 0V6.6l-5.22 5.19a.75.75 0 0 1-1.06 0Z"/></svg></a></div>
         </div>
         <div class="project-main">
           <p class="project-summary">A production storefront, admin console, and in-person point-of-sale for an independent record label, with dual-currency pricing, idempotent order processing, content management, role-based admin access, and per-currency reporting.</p>
@@ -195,7 +198,6 @@
             <li>Secured the public endpoints with Zod validation before any database access, IP-keyed rate limiting on unauthenticated routes, honeypot bot filtering, parameterized queries, CSP headers, and generic client errors that keep detail server-side.</li>
             <li>Set up the release workflow after a schema-lag outage. Migrations deploy before code, GitHub Actions applies them to Neon on merge, and a typecheck, lint, test, and build gate runs across all 16 workspace tasks.</li>
           </ul>
-          
         </div>
         <div class="project-side">
           <p class="mono micro-label">Built with</p>
@@ -204,8 +206,11 @@
       </article>
       <article class="project filterable" data-tech="typescript python node-js express react postgresql drizzle-orm rest-apis docker nginx pm2 ssl-tls better-auth docker-compose schema-design session-auth-rbac">
         <div class="project-head">
-          <h3>SoC Model Benchmarking Platform</h3>
-          <p class="mono project-meta">Architect &amp; developer <span class="sep">·</span> McMaster Faculty of Engineering <span class="sep">·</span> 2026</p>
+          <div>
+            <h3>SoC Model Benchmarking Platform</h3>
+            <p class="mono project-meta">Architect &amp; developer <span class="sep">·</span> McMaster Faculty of Engineering <span class="sep">·</span> 2026</p>
+          </div>
+          
         </div>
         <div class="project-main">
           <p class="project-summary">A research platform where teams upload AI battery State-of-Charge models and have them scored against a shared benchmark. Submissions are graded on 18+ metrics and ranked against every other entry.</p>
@@ -217,7 +222,6 @@
             <li>Built an asynchronous Docker-based evaluation pipeline that spawns isolated containers per submission, captures structured scoring output, and delivers results to users via automated email notifications.</li>
             <li>Deployed and maintained the production environment with Docker Compose, NGINX, PM2, and SSL/TLS, with structured logging and secure file handling including upload validation and path traversal prevention.</li>
           </ul>
-          
         </div>
         <div class="project-side">
           <p class="mono micro-label">Built with</p>

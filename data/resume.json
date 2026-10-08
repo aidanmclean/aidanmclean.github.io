@@ -114,7 +114,9 @@
         "Secured the public endpoints with Zod validation before any database access, IP-keyed rate limiting on unauthenticated routes, honeypot bot filtering, parameterized queries, CSP headers, and generic client errors that keep detail server-side.",
         "Set up the release workflow after a schema-lag outage. Migrations deploy before code, GitHub Actions applies them to Neon on merge, and a typecheck, lint, test, and build gate runs across all 16 workspace tasks."
       ],
-      "links": []
+      "links": [
+        { "label": "endnoterecords.ca", "url": "https://endnoterecords.ca" }
+      ]
     },
     {
       "name": "SoC Model Benchmarking Platform",

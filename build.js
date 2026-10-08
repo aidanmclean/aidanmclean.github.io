@@ -182,15 +182,18 @@ function projects(d) {
       const links = (p.links || [])
         .map(
           (l) =>
-            `<a class="plink mono" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ${ICONS.arrow}</a>`
+            `<a class="btn plink" href="${esc(l.url)}" target="_blank" rel="noopener"><span>${esc(l.label)}</span>${ICONS.arrow}</a>`
         )
         .join('');
       // Source order is head -> prose -> tags; on wide screens the tags are
       // placed into a left rail by grid, so the reading order stays sensible.
       return `      <article class="project filterable" data-tech="${esc(techAttr)}">
         <div class="project-head">
-          <h3>${esc(p.name)}</h3>
-          <p class="mono project-meta">${[p.role, p.org, p.year].filter(Boolean).map(esc).join(' <span class="sep">·</span> ')}</p>
+          <div>
+            <h3>${esc(p.name)}</h3>
+            <p class="mono project-meta">${[p.role, p.org, p.year].filter(Boolean).map(esc).join(' <span class="sep">·</span> ')}</p>
+          </div>
+          ${links ? `<div class="plinks">${links}</div>` : ''}
         </div>
         <div class="project-main">
           <p class="project-summary">${esc(p.summary)}</p>
@@ -202,7 +205,6 @@ function projects(d) {
           </ul>`
               : ''
           }
-          ${links ? `<div class="plinks">${links}</div>` : ''}
         </div>
         <div class="project-side">
           <p class="mono micro-label">Built with</p>

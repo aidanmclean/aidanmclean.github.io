@@ -39,7 +39,6 @@
   --accent-soft: rgba(213, 154, 106, 0.14);
   --accent-ink: #1d1409;
   --grid: rgba(232, 208, 176, 0.04);
-  --glow: rgba(213, 154, 106, 0.1);
   --shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
 }
 
@@ -55,7 +54,6 @@
   --accent-soft: rgba(150, 87, 42, 0.1);
   --accent-ink: #fdf8f1;
   --grid: rgba(90, 60, 25, 0.045);
-  --glow: rgba(150, 87, 42, 0.08);
   --shadow: 0 24px 60px -22px rgba(70, 50, 25, 0.28);
 }
 
@@ -302,16 +300,6 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   padding: clamp(3.5rem, 9vw, 7.5rem) 0 clamp(3rem, 7vw, 5.5rem);
   overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -30%; left: 50%;
-  width: min(1100px, 130vw);
-  aspect-ratio: 1;
-  translate: -50% 0;
-  background: radial-gradient(circle, var(--glow), transparent 62%);
-  pointer-events: none;
 }
 
 .hero-grid {
@@ -566,7 +554,14 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
     filter 0.35s var(--ease);
 }
 .project:hover { border-color: var(--line-2); }
-.project-head { margin-bottom: 1.5rem; }
+.project-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.9rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
 .project h3 { font-size: var(--step-1); margin-bottom: 0.35rem; }
 .project-meta { color: var(--ink-3); }
 .project-summary { max-width: 72ch; margin-bottom: 0.85rem; text-wrap: pretty; }
@@ -586,10 +581,9 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
 @media (max-width: 859px) {
   .project-side { margin-top: 1.5rem; }
 }
-.plinks { display: flex; gap: 1rem; margin-top: 1rem; }
-.plink { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--accent); }
-.plink svg { width: 12px; height: 12px; fill: currentColor; }
-.plink:hover { text-decoration: underline; text-underline-offset: 3px; }
+.plinks { display: flex; flex-wrap: wrap; gap: 0.5rem; flex: none; }
+.plink { color: var(--accent); border-color: var(--line-2); }
+.plink svg { width: 12px; height: 12px; }
 
 /* -------------------------------------------------------------- 10. skills */
 
@@ -878,7 +872,6 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
   .hero-links, .s-note, .mini-copy, .footer, .spec-dots { display: none !important; }
   .js .reveal { opacity: 1 !important; transform: none !important; }
   .hero { padding: 0 0 1rem; }
-  .hero::before { display: none; }
   .section { padding: 1rem 0; break-inside: avoid; }
   .job, .edu, .project { break-inside: avoid; padding: 0.8rem 0; }
   .job-when { position: static; }
@@ -895,8 +888,12 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
   margin-top: 0.4rem;
 }
 
+/* Solid offset block behind the photo, like a print frame. Leaves room
+   below so the block does not crowd the spec card. */
 .portrait {
-  margin: 0;
+  --offset: 12px;
+  margin: 0 var(--offset) calc(var(--offset) + 0.4rem) 0;
+  box-shadow: var(--offset) var(--offset) 0 var(--accent);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
@@ -921,7 +918,7 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
 /* Keep the square crop on small screens; a landscape crop of a portrait
    photo cuts the top of the head off. Cap the width instead. */
 @media (max-width: 640px) {
-  .portrait { max-width: 240px; }
+  .portrait { max-width: 240px; --offset: 9px; }
 }
 
 @media print {
