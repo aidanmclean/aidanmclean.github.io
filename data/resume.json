@@ -5,7 +5,7 @@
     "url": "https://aidanmclean.github.io",
     "repo": "https://github.com/aidanmclean/aidanmclean.github.io",
     "themeColor": "#13100b",
-    "lastUpdated": "September 2026"
+    "lastUpdated": "October 2026"
   },
 
   "basics": {
@@ -15,7 +15,10 @@
     "location": "Keswick, ON",
     "email": "aidanmclean7030@yahoo.com",
     "phone": "",
-    "status": "Research Assistant @ McMaster Faculty of Engineering",
+    "status": [
+      "Co-Founder & Technical Lead @ Endnote Records",
+      "Research Assistant @ McMaster Faculty of Engineering"
+    ],
     "lede": "I am a Full-Stack Developer, and I enjoy designing and developing solutions based on real needs. My most recent projects are a research platform at McMaster where researchers benchmark AI battery models, and a full-stack e-commerce platform for an independent record label.",
     "photo": "assets/files/headshot.jpeg",
     "photoAlt": "Aidan McLean",
@@ -41,7 +44,7 @@
       "position": "Co-Founder & Technical Lead",
       "start": "April 2025",
       "end": "Present",
-      "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "Stripe", "Vercel", "Neon", "GitHub Actions", "Session auth & RBAC"],
+      "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "Stripe", "Vercel", "Neon", "GitHub Actions", "Session auth & RBAC", "App Router", "Server Components", "Tailwind CSS", "Base UI", "Responsive design", "ESLint", "Prettier"],
       "highlights": [
         "Launched a custom e-commerce platform in October 2026, designed and built solo, giving the label its own storefront and staff admin for selling merchandise both online and in person.",
         "Took 10 orders on launch day across a catalogue of 21 products and 18 artists, through a reliable Stripe checkout with accurate inventory tracking.",
@@ -58,11 +61,11 @@
       "end": "Present",
       "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git", "Docker Compose", "better-auth", "Schema design", "Session auth & RBAC", "Tailwind CSS", "shadcn/ui"],
       "highlights": [
-        "Develop and maintain a full-stack benchmarking platform for a McMaster battery research group, enabling researchers to submit State-of-Charge estimation models for sandboxed evaluation and ranking across 18+ performance metrics.",
-        "Plan and prioritize work with the project supervisor and team in weekly meetings, scoping bug fixes, feature development, and deployment tasks within the project's timeline and resource constraints.",
-        "Resolve issues and feature requests tracked by the supervisor across the full stack, from the REST API and PostgreSQL schema to the React interface, while maintaining platform stability for its research users.",
-        "Incorporate agentic AI development tools such as Claude Code into the workflow for debugging, code review, and infrastructure scripting.",
-        "Managed production deployment on Compute Canada's OpenStack cloud, including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal."
+        "Developed a full-stack benchmarking platform for battery State-of-Charge estimation algorithms, where submitted models are evaluated in isolated Docker containers and ranked across 18+ performance metrics.",
+        "Translated requirements from weekly planning meetings and a prioritized issue backlog into delivered fixes and features across the REST API, PostgreSQL schema, and React interface, keeping development aligned with the research group's needs.",
+        "Built administrative tooling that let the research group manage users and submissions independently, including account bans, session revocation, private model visibility, and submission on a researcher's behalf.",
+        "Redesigned the platform's interface with shadcn/ui, added downloads for models and evaluation results, and implemented in-app and email notifications for submission and evaluation status.",
+        "Managed the platform's pre-production environment on Compute Canada's OpenStack cloud, including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal."
       ]
     },
     {
@@ -71,7 +74,7 @@
       "location": "Newmarket, ON",
       "start": "May 2025",
       "end": "September 2025",
-      "tech": ["TypeScript", "JavaScript", "HTML / CSS", "Drupal", "Microsoft APIM", "Power Automate", "GIS services"],
+      "tech": ["TypeScript", "JavaScript", "HTML / CSS", "Drupal", "Microsoft APIM", "Power Automate", "GIS services", "Azure Entra"],
       "highlights": [
         "Customized Drupal Webforms with JavaScript to implement dynamic form behaviour, validation, and improved user experience.",
         "Built front-end integrations with Microsoft APIM to apply business logic, route requests securely, and connect forms to backend services.",

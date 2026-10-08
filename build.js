@@ -56,17 +56,31 @@ function sectionHead(num, title, note) {
       </header>`;
 }
 
+// Long tag lists on experience and project entries collapse on phones to the
+// first CHIPS_VISIBLE tags plus a "+N more" toggle (see site.css / site.js).
+const CHIPS_VISIBLE = 6;
+let chipListId = 0;
+
 function chips(list, opts = {}) {
   if (!list || !list.length) return '';
-  const cls = opts.small ? 'chips chips--sm' : 'chips';
-  return `<ul class="${cls}">${list
-    .map(
-      (t) =>
-        `<li><button type="button" class="chip" data-chip="${esc(slug(t))}" aria-pressed="false"><span>${esc(
-          t
-        )}</span></button></li>`
-    )
-    .join('')}</ul>`;
+  // Only collapse when it hides a meaningful number of tags, never "+1 more".
+  const collapse = opts.collapse && list.length > CHIPS_VISIBLE + 2;
+  const cls = ['chips', opts.small && 'chips--sm', collapse && 'chips--collapsible'].filter(Boolean).join(' ');
+  const id = collapse ? `chips-${++chipListId}` : '';
+  const items = list.map(
+    (t, i) =>
+      `<li${collapse && i >= CHIPS_VISIBLE ? ' class="chip-extra"' : ''}><button type="button" class="chip" data-chip="${esc(
+        slug(t)
+      )}" aria-pressed="false"><span>${esc(t)}</span></button></li>`
+  );
+  if (collapse) {
+    const more = list.length - CHIPS_VISIBLE;
+    items.push(
+      `<li class="chips-more"><button type="button" class="chip-toggle" aria-expanded="false" aria-controls="${id}" data-more="${more}">` +
+        `<span class="chip-toggle-label">+${more} more</span><span class="sr-only"> technologies</span></button></li>`
+    );
+  }
+  return `<ul class="${cls}"${id ? ` id="${id}"` : ''}>${items.join('')}</ul>`;
 }
 
 /* ---------------------------------------------------------------- sections */
@@ -116,7 +130,9 @@ function hero(d) {
   return `  <section class="hero" id="top">
     <div class="wrap hero-grid">
       <div class="hero-main">
-        <p class="status mono reveal">${esc(b.status)}</p>
+        <div class="status-list reveal">
+          ${[].concat(b.status || []).map((t) => `<p class="status mono">${esc(t)}</p>`).join('\n          ')}
+        </div>
         <h1 class="reveal">${esc(b.name)}</h1>
         <p class="hero-label mono reveal">${esc(b.label)} <span class="sep">/</span> ${esc(b.location)}</p>
         <p class="lede reveal">${esc(b.lede)}</p>
@@ -155,7 +171,7 @@ function experience(d) {
         <div class="job-body">
           <h3 class="job-role">${esc(job.position)}</h3>
           <p class="job-org mono">${esc(job.company)} <span class="sep">·</span> ${esc(job.location)}</p>
-          ${chips(job.tech, { small: true })}
+          ${chips(job.tech, { small: true, collapse: true })}
           <ul class="bullets">
             ${job.highlights.map((h) => `<li>${esc(h)}</li>`).join('\n            ')}
           </ul>
@@ -208,7 +224,7 @@ function projects(d) {
         </div>
         <div class="project-side">
           <p class="mono micro-label">Built with</p>
-          ${chips(p.tech, { small: true })}
+          ${chips(p.tech, { small: true, collapse: true })}
         </div>
       </article>`;
     })
@@ -381,6 +397,7 @@ function jsonLd(d) {
 }
 
 function main() {
+  chipListId = 0;
   const d = JSON.parse(fs.readFileSync(DATA, 'utf8'));
   const tpl = fs.readFileSync(TPL, 'utf8');
 

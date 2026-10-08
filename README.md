@@ -62,7 +62,7 @@ filename, update `basics.resumePdf` in `data/resume.json` to match.
 
 - **`site`**: canonical URL, browser theme colour, and the "Updated ..." stamp in the footer.
 - **`basics`**: name, one-line label, location, email, the hero paragraph (`lede`), the
-  status pill, the PDF path, the "at a glance" rows (`spec`), and social profiles.
+  status pills (one title, or a list for several), the PDF path, the "at a glance" rows (`spec`), and social profiles.
   `phone` is intentionally left blank; fill it in and a Phone row appears under Contact.
   `contactNote` is the sentence above the contact list.
   `photo` and `photoAlt` are optional: set `photo` to an image path and it appears

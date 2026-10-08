@@ -294,6 +294,39 @@ a { color: inherit; text-decoration: none; }
   border-color: var(--accent);
 }
 
+/* Collapsible tag lists: phones only, and only once JS can toggle them. */
+.chips-more { display: none; }
+.chip-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.85rem;
+  font: 500 0.7rem / 1 var(--mono);
+  color: var(--accent);
+  background: transparent;
+  border: 1px dashed var(--line-2);
+  border-radius: 100px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
+}
+.chip-toggle:hover { border-style: solid; border-color: var(--accent); background: var(--accent-soft); }
+
+@media (max-width: 640px) {
+  .js .chips--collapsible { align-items: center; }
+  .js .chips--collapsible > .chips-more { display: block; }
+  .js .chips--collapsible:not(.is-open) > .chip-extra { display: none; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ----------------------------------------------------------------- 6. hero */
 
 .hero {
@@ -318,6 +351,11 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: 100px;
   padding: 0.34rem 0.85rem;
+}
+.status-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -908,6 +946,11 @@ body.is-filtering .filterable.match .job-body::before { background: var(--accent
    photo cuts the top of the head off. Cap the width instead. */
 @media (max-width: 640px) {
   .portrait { max-width: 240px; --offset: 9px; }
+}
+
+@media print {
+  .chips-more { display: none !important; }
+  .chip-extra { display: block !important; }
 }
 
 @media print {

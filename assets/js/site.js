@@ -105,6 +105,23 @@
     });
   }
 
+  /* ------------------------------------------------- collapsible tag lists */
+
+  const tagLists = $$('.chips--collapsible');
+
+  function setTagListOpen(list, open) {
+    const btn = $('.chip-toggle', list);
+    list.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    $('.chip-toggle-label', btn).textContent = open ? 'Show fewer' : '+' + btn.dataset.more + ' more';
+  }
+
+  for (const list of tagLists) {
+    $('.chip-toggle', list).addEventListener('click', () =>
+      setTagListOpen(list, !list.classList.contains('is-open'))
+    );
+  }
+
   /* -------------------------------------------------------------- tag filter */
 
   const filterables = $$('.filterable');
@@ -128,6 +145,12 @@
     activeTag = tag;
     for (const c of allChips) {
       c.setAttribute('aria-pressed', String(!!tag && c.dataset.chip === tag));
+    }
+    // A selected tag tucked behind "+N more" opens its list so it stays visible.
+    if (tag) {
+      for (const list of tagLists) {
+        if ($('.chip-extra .chip[aria-pressed="true"]', list)) setTagListOpen(list, true);
+      }
     }
 
     if (!tag) {
