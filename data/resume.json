@@ -104,13 +104,13 @@
       "year": "2026",
       "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "SQL", "Drizzle ORM", "Stripe", "Turborepo", "better-auth", "Zod", "Git", "GitHub Actions", "App Router", "Server Components", "Schema design", "Session auth & RBAC", "pnpm", "Vitest", "Neon", "Tailwind CSS", "Base UI", "Responsive design", "Vercel", "ESLint", "Prettier"],
       "summary": "A production storefront, admin console, and in-person point-of-sale for an independent record label, with dual-currency pricing, idempotent order processing, content management, role-based admin access, and per-currency reporting.",
-      "detail": "A pnpm and Turborepo monorepo of two Next.js 16 applications, a public storefront and a login-gated admin, over shared packages for the database layer, authentication, and UI components. About 39,000 lines of TypeScript across 38 Postgres tables and 31 migrations, built solo over 62 commits and live in production since October 2026. Pricing, checkout, refunds, stock movement, discounts, and shipping are implemented once in the shared database package, so both applications run the same logic and it can be unit tested without a Next.js runtime.",
+      "detail": "Built solo and in production since October 2026, taking real payments online and at shows. The storefront and admin share one database and authentication layer, so pricing, checkout, and inventory work the same way in both.",
       "highlights": [
-        "Built a checkout that reprices every line from the database on the server and reserves stock in one transaction, locking rows in a fixed order to avoid deadlocks. Reservations are released by expiry, webhook, or a reconciliation job through a single guarded update, so none can be released twice.",
-        "Made Stripe webhook handling idempotent by verifying signatures, storing events before processing, and keying order creation on the session ID, with a 15-minute reconciliation job that recovers paid sessions whose webhook never arrived.",
-        "Implemented USD and CAD pricing with no exchange-rate conversion, rendering both prices on the server and selecting one with a pre-paint script so product pages stay statically generated with no layout shift. Added a bool_and completeness check, since SQL min() ignores NULLs and would show a CAD price for products that cannot be bought in CAD.",
-        "Enforced permission-level access control with better-auth on every admin route and server action, validated all input with Zod, and stored rate limits in Postgres so they hold across serverless instances. Changes to money, inventory, and user data are written to an audit log that database triggers keep append-only.",
-        "Wrote 142 Vitest unit tests on pricing, shipping, discounts, and permissions. Every push runs typecheck, lint, test, and build across six workspaces in GitHub Actions, and migrations apply to Neon on merge."
+        "Designed and built the platform end to end, covering the catalogue, inventory, checkout, orders, refunds, discounts, shipping, and local pickup.",
+        "Integrated Stripe for payments and refunds, with safeguards so each order is recorded exactly once and a recovery job for payments whose confirmation never arrives.",
+        "Built USD and CAD pricing, with prices set separately in each currency and each visitor seeing their own currency on fast, statically generated pages.",
+        "Built the staff admin with role-based permissions, two-factor sign-in, an audit log, sales analytics, content management, and a phone-based point of sale for selling at shows.",
+        "Deployed to production on Vercel and Neon with automated tests, a CI/CD pipeline in GitHub Actions, automatic database migrations, and error monitoring."
       ],
       "links": [
         { "label": "endnoterecords.ca", "url": "https://endnoterecords.ca" }
