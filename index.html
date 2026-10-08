@@ -188,13 +188,13 @@
         </div>
         <div class="project-main">
           <p class="project-summary">A production storefront, admin console, and in-person point-of-sale for an independent record label, with dual-currency pricing, idempotent order processing, content management, role-based admin access, and per-currency reporting.</p>
-          <p class="project-detail">Built solo and in production since October 2026, taking real payments online and at shows. The storefront and admin share one database and authentication layer, so pricing, checkout, and inventory work the same way in both.</p>
+          <p class="project-detail">Built solo from the ground up and live in production since October 2026, handling real orders and payments online and in person. Both applications share one database, authentication layer, and component library in a TypeScript monorepo.</p>
           <ul class="bullets project-bullets">
-            <li>Designed and built the platform end to end, covering the catalogue, inventory, checkout, orders, refunds, discounts, shipping, and local pickup.</li>
-            <li>Integrated Stripe for payments and refunds, with safeguards so each order is recorded exactly once and a recovery job for payments whose confirmation never arrives.</li>
-            <li>Built USD and CAD pricing, with prices set separately in each currency and each visitor seeing their own currency on fast, statically generated pages.</li>
-            <li>Built the staff admin with role-based permissions, two-factor sign-in, an audit log, sales analytics, content management, and a phone-based point of sale for selling at shows.</li>
-            <li>Deployed to production on Vercel and Neon with automated tests, a CI/CD pipeline in GitHub Actions, automatic database migrations, and error monitoring.</li>
+            <li>Designed and built a two-application platform, a public storefront and a staff admin on a shared Postgres database, covering the catalogue, inventory, checkout, order fulfilment, refunds, discounts, shipping, and local pickup.</li>
+            <li>Built a Stripe checkout that prices every order on the server and reserves stock while the customer pays, with webhook handling that records each order exactly once and a scheduled job that recovers any payment whose confirmation is lost.</li>
+            <li>Designed dual-currency pricing in USD and CAD, with prices set by hand in each currency rather than converted, and displayed each visitor's currency without giving up static page generation or causing layout shift.</li>
+            <li>Built a staff admin used both in the office and at live shows, with permission-based roles, two-factor sign-in, sales analytics by channel and currency, content management, a phone-first point of sale, and an append-only audit log of every change to money, inventory, and user data.</li>
+            <li>Secured the platform with validation on every server action, database-backed rate limits on sign-in and public forms, salted hashing in place of stored IP addresses, and error reports scrubbed of personal data. Deployed on Vercel and Neon with a GitHub Actions CI/CD pipeline, 142 unit tests, and automatic database migrations.</li>
           </ul>
         </div>
         <div class="project-side">
