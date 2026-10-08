@@ -58,11 +58,11 @@
       "end": "Present",
       "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git", "Docker Compose", "better-auth", "Schema design", "Session auth & RBAC", "Tailwind CSS", "shadcn/ui"],
       "highlights": [
-        "Develop and maintain the lab's battery State-of-Charge benchmarking platform, a full-stack web application where researchers submit estimation models that are evaluated in isolated Docker containers and ranked on a public leaderboard across 18+ metrics.",
-        "Plan each week's work in weekly meetings with the supervisor and team, setting priorities across bug fixes, new features, and deployment.",
-        "Work through a shared spreadsheet of issues and feature requests flagged by the supervisor, implementing each end to end from the REST API and database to the React interface, using agentic AI tools such as Claude Code for debugging and code review.",
-        "Deliver changes within the project's time, infrastructure, and resource constraints while keeping the platform stable for the researchers using it.",
-        "Managed the platform's deployment on Compute Canada's OpenStack cloud, including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal."
+        "Develop and maintain a full-stack benchmarking platform for a McMaster battery research group, enabling researchers to submit State-of-Charge estimation models for sandboxed evaluation and ranking across 18+ performance metrics.",
+        "Plan and prioritize work with the project supervisor and team in weekly meetings, scoping bug fixes, feature development, and deployment tasks within the project's timeline and resource constraints.",
+        "Resolve issues and feature requests tracked by the supervisor across the full stack, from the REST API and PostgreSQL schema to the React interface, while maintaining platform stability for its research users.",
+        "Incorporate agentic AI development tools such as Claude Code into the workflow for debugging, code review, and infrastructure scripting.",
+        "Managed production deployment on Compute Canada's OpenStack cloud, including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal."
       ]
     },
     {
