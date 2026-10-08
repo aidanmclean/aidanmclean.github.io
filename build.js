@@ -116,7 +116,7 @@ function hero(d) {
   return `  <section class="hero" id="top">
     <div class="wrap hero-grid">
       <div class="hero-main">
-        <p class="status mono reveal"><span class="dot" aria-hidden="true"></span>${esc(b.status)}</p>
+        <p class="status mono reveal">${esc(b.status)}</p>
         <h1 class="reveal">${esc(b.name)}</h1>
         <p class="hero-label mono reveal">${esc(b.label)} <span class="sep">/</span> ${esc(b.location)}</p>
         <p class="lede reveal">${esc(b.lede)}</p>
