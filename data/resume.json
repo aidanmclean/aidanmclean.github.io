@@ -98,19 +98,19 @@
 
   "projects": [
     {
-      "name": "Record Label E-Commerce Platform",
-      "role": "Architect & developer",
+      "name": "Independent Record Label E-Commerce Platform",
+      "role": "Sole Architect & Developer",
       "org": "Endnote Records",
       "year": "2026",
-      "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "SQL", "Drizzle ORM", "Stripe", "Turborepo", "better-auth", "Zod", "Git", "GitHub Actions", "App Router", "Server Components", "Schema design", "Session auth & RBAC", "pnpm", "Vitest", "Neon", "Tailwind CSS", "Base UI", "Responsive design", "Vercel", "ESLint", "Prettier"],
-      "summary": "A production storefront, admin console, and in-person point-of-sale for an independent record label, with dual-currency pricing, idempotent order processing, content management, role-based admin access, and per-currency reporting.",
-      "detail": "Built solo from the ground up and live in production since October 2026, handling real orders and payments online and in person. Both applications share one database, authentication layer, and component library in a TypeScript monorepo.",
+      "tech": ["TypeScript", "Next.js", "React", "PostgreSQL", "SQL", "Drizzle ORM", "Stripe", "Turborepo", "better-auth", "Zod", "Git", "GitHub Actions", "Schema design", "Session auth & RBAC", "pnpm", "Vitest", "Neon", "Tailwind CSS", "Vercel"],
+      "summary": "A full-stack e-commerce platform built solo for an independent record label: two Next.js 16 App Router applications in a pnpm and Turborepo monorepo, sharing a Drizzle ORM data layer over Postgres, better-auth authentication, and a Base UI component library.",
+      "detail": "Pricing, checkout, refunds, and stock logic live in the shared data package, so both applications run the same unit-tested code. In production since October 2026, handling real orders and payments online and in person.",
       "highlights": [
-        "Designed and built a two-application platform, a public storefront and a staff admin on a shared Postgres database, covering the catalogue, inventory, checkout, order fulfilment, refunds, discounts, shipping, and local pickup.",
-        "Built a Stripe checkout that prices every order on the server and reserves stock while the customer pays, with webhook handling that records each order exactly once and a scheduled job that recovers any payment whose confirmation is lost.",
-        "Designed dual-currency pricing in USD and CAD, with prices set by hand in each currency rather than converted, and displayed each visitor's currency without giving up static page generation or causing layout shift.",
-        "Built a staff admin used both in the office and at live shows, with permission-based roles, two-factor sign-in, sales analytics by channel and currency, content management, a phone-first point of sale, and an append-only audit log of every change to money, inventory, and user data.",
-        "Secured the platform with validation on every server action, database-backed rate limits on sign-in and public forms, salted hashing in place of stored IP addresses, and error reports scrubbed of personal data. Deployed on Vercel and Neon with a GitHub Actions CI/CD pipeline, 142 unit tests, and automatic database migrations."
+        "Built a Stripe Checkout flow that reprices every line server-side and reserves stock in a single transaction with deterministically ordered row locks, with signature-verified, idempotent webhooks and a 15-minute reconciliation job that recovers paid sessions whose webhook never arrived.",
+        "Implemented USD and CAD pricing with no FX conversion, rendering both prices in React Server Components and selecting one with a pre-paint inline script, so product pages keep static generation with ISR and avoid layout shift.",
+        "Enforced permission-level RBAC with better-auth's access-control plugin on every admin route and server action, with invite-only accounts, TOTP two-factor sign-in, and an append-only audit log enforced by Postgres triggers.",
+        "Validated every server action with Zod, implemented rate limits as atomic Postgres upserts that hold across serverless instances, stored only salted hashes of visitor IPs, and scrubbed personal data from Sentry error reports before they leave the server or browser.",
+        "Deployed as two Vercel projects on Neon Postgres, with a GitHub Actions pipeline that runs typecheck, lint, 142 Vitest tests, and build against a real Postgres instance, applies migrations on merge, and runs scheduled jobs for reconciliation and staff alerts."
       ],
       "links": [
         { "label": "endnoterecords.ca", "url": "https://endnoterecords.ca" }
@@ -118,7 +118,7 @@
     },
     {
       "name": "SoC Model Benchmarking Platform",
-      "role": "Architect & developer",
+      "role": "Architect & Developer",
       "org": "McMaster Faculty of Engineering",
       "year": "2026",
       "tech": ["TypeScript", "Python", "Node.js", "Express", "React", "PostgreSQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "PM2", "SSL/TLS", "better-auth", "Docker Compose", "Schema design", "Session auth & RBAC"],
@@ -130,7 +130,9 @@
         "Built an asynchronous Docker-based evaluation pipeline that spawns isolated containers per submission, captures structured scoring output, and delivers results to users via automated email notifications.",
         "Deployed and maintained the production environment with Docker Compose, NGINX, PM2, and SSL/TLS, with structured logging and secure file handling including upload validation and path traversal prevention."
       ],
-      "links": []
+      "links": [
+        { "label": "batterysocbenchmark.ca", "url": "https://batterysocbenchmark.ca" }
+      ]
     }
   ],
 
