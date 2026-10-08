@@ -52,17 +52,17 @@
     },
     {
       "company": "McMaster University Faculty of Engineering",
-      "position": "Research Assistant / Full-Stack Developer",
+      "position": "Research Assistant & Full-Stack Developer",
       "location": "Hamilton, ON",
       "start": "May 2026",
       "end": "Present",
       "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git", "Docker Compose", "better-auth", "Schema design", "Session auth & RBAC", "Tailwind CSS", "shadcn/ui"],
       "highlights": [
-        "Took the benchmarking platform from capstone project to production for a McMaster battery research group, deploying it on Compute Canada's OpenStack cloud with NGINX, PM2, and SSL/TLS.",
-        "Built admin tooling for the lab, including user management, bans and session revocation, private-model visibility, and submitting models on a researcher's behalf.",
-        "Added in-app and email notifications for uploads and evaluation results, and connected configurable parallelization levels to the evaluation scheduler.",
-        "Rebuilt the leaderboard, submissions, and model comparison pages on shadcn/ui, adding model size, complexity, and description columns, downloads for models and results, and public access to the leaderboard.",
-        "Used agentic AI tools such as Claude Code for debugging, code review, and infrastructure scripting."
+        "Develop and maintain the lab's battery State-of-Charge benchmarking platform, a full-stack web application where researchers submit estimation models that are evaluated in isolated Docker containers and ranked on a public leaderboard across 18+ metrics.",
+        "Plan each week's work in weekly meetings with the supervisor and team, setting priorities across bug fixes, new features, and deployment.",
+        "Work through a shared spreadsheet of issues and feature requests flagged by the supervisor, implementing each end to end from the REST API and database to the React interface, using agentic AI tools such as Claude Code for debugging and code review.",
+        "Deliver changes within the project's time, infrastructure, and resource constraints while keeping the platform stable for the researchers using it.",
+        "Managed the platform's deployment on Compute Canada's OpenStack cloud, including NGINX configuration, PM2 process management, and SSL/TLS certificate renewal."
       ]
     },
     {
