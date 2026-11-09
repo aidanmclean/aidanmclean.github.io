@@ -31,10 +31,6 @@ const dateRange = (job) => job.dateNote || `${job.start} - ${job.end}`;
 /* ----------------------------------------------------------------- pieces */
 
 const ICONS = {
-  github:
-    '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>',
-  linkedin:
-    '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.6 5.3H.9V16h2.7V5.3ZM2.25 0a1.57 1.57 0 1 0 0 3.13 1.57 1.57 0 0 0 0-3.13ZM16 9.6c0-2.9-1.55-4.5-3.6-4.5-1.6 0-2.4.9-2.8 1.6V5.3H6.9c.04.75 0 10.7 0 10.7h2.7v-6a1.9 1.9 0 0 1 .1-.7c.2-.5.7-1.1 1.6-1.1 1.1 0 1.6.85 1.6 2.1V16H16V9.6Z"/></svg>',
   mail:
     '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 3h13c.28 0 .5.22.5.5v.36L8 8.6.5 3.86V3.5c0-.28.22-.5.5-.5Zm-1 2.55V12.5c0 .28.22.5.5.5h13a.5.5 0 0 0 .5-.5V5.55L8.27 9.92a.5.5 0 0 1-.54 0L.5 5.55Z"/></svg>',
   download:
@@ -43,15 +39,11 @@ const ICONS = {
     '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.22 11.78a.75.75 0 0 1 0-1.06l5.19-5.19H5.5a.75.75 0 0 1 0-1.5h5.75a.75.75 0 0 1 .75.75v5.75a.75.75 0 0 1-1.5 0V6.6l-5.22 5.19a.75.75 0 0 1-1.06 0Z"/></svg>',
 };
 
-const profileIcon = (network) => ICONS[network.toLowerCase()] || ICONS.arrow;
-
-/** Section header: `01 / EXPERIENCE` with a rule. */
-function sectionHead(num, title, note) {
+/** Section header: the title, plus an optional hint on the right. */
+function sectionHead(title, note) {
   return `
       <header class="s-head">
-        <span class="s-num">${esc(num)}</span>
         <h2>${esc(title)}</h2>
-        <span class="s-rule"></span>
         ${note ? `<span class="s-note">${esc(note)}</span>` : ''}
       </header>`;
 }
@@ -95,7 +87,7 @@ function header(d) {
   ];
   return `<header class="topbar" id="topbar">
   <div class="wrap topbar-in">
-    <a class="mono monogram" href="#top" aria-label="Back to top">${esc(d.basics.initials)}<span class="caret"></span></a>
+    <a class="mono monogram" href="#top" aria-label="Back to top">${esc(d.basics.initials)}</a>
     <nav class="nav" aria-label="Sections">
       ${nav.map(([id, label]) => `<a href="#${id}" data-nav="${id}">${esc(label)}</a>`).join('\n      ')}
     </nav>
@@ -119,28 +111,23 @@ function hero(d) {
     `<button type="button" class="btn" data-copy="${esc(b.email)}">${ICONS.mail}<span class="copy-label">${esc(
       b.email
     )}</span></button>`,
-    ...b.profiles.map(
-      (p) =>
-        `<a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener">${profileIcon(p.network)}<span>${esc(
-          p.network
-        )}</span></a>`
-    ),
+    `<span class="hero-profiles mono">${b.profiles
+      .map((p) => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.network)}</a>`)
+      .join('')}</span>`,
   ].join('\n        ');
+  const status = [].concat(b.status || []).map((t) => ` <span class="sep">·</span> <span class="at">${esc(t)}</span>`).join('');
 
   return `  <section class="hero" id="top">
     <div class="wrap hero-grid">
       <div class="hero-main">
-        <div class="status-list reveal">
-          ${[].concat(b.status || []).map((t) => `<p class="status mono">${esc(t)}</p>`).join('\n          ')}
-        </div>
-        <h1 class="reveal">${esc(b.name)}</h1>
-        <p class="hero-label mono reveal">${esc(b.label)} <span class="sep">/</span> ${esc(b.location)}</p>
-        <p class="lede reveal">${esc(b.lede)}</p>
-        <div class="hero-links reveal">
+        <h1>${esc(b.name)}</h1>
+        <p class="hero-label mono">${esc(b.label)}${status}</p>
+        <p class="lede">${esc(b.lede)}</p>
+        <div class="hero-links">
         ${links}
         </div>
       </div>
-      <aside class="hero-side reveal">
+      <aside class="hero-side">
         ${
           b.photo
             ? `<figure class="portrait">
@@ -150,7 +137,6 @@ function hero(d) {
             : ''
         }
         <div class="spec" aria-label="At a glance">
-          <div class="spec-bar mono"><span>at a glance</span><span class="spec-dots" aria-hidden="true"></span></div>
           <dl class="spec-list mono">
             ${b.spec
               .map((r) => `<div class="spec-row"><dt>${esc(r.key)}</dt><dd>${esc(r.value)}</dd></div>`)
@@ -182,7 +168,7 @@ function experience(d) {
 
   return `  <section class="section" id="experience" data-section="Experience">
     <div class="wrap">
-${sectionHead('01', 'Experience', 'tap a tag to filter')}
+${sectionHead('Experience', 'Tap a tag to filter')}
       <div class="jobs">
 ${items}
       </div>
@@ -232,7 +218,7 @@ function projects(d) {
 
   return `  <section class="section" id="projects" data-section="Projects">
     <div class="wrap">
-${sectionHead('02', 'Projects')}
+${sectionHead('Projects')}
       <div class="projects">
 ${items}
       </div>
@@ -252,7 +238,7 @@ function toolkit(d) {
 
   return `  <section class="section" id="toolkit" data-section="Toolkit">
     <div class="wrap">
-${sectionHead('03', 'Toolkit', 'tap to see where I used it')}
+${sectionHead('Toolkit', 'Tap a tag to see where I used it')}
       <div class="skills">
 ${groups}
       </div>
@@ -281,7 +267,7 @@ function education(d) {
 
   return `  <section class="section" id="education" data-section="Education">
     <div class="wrap">
-${sectionHead('04', 'Education')}
+${sectionHead('Education')}
       <div class="jobs">
 ${items}
       </div>
@@ -300,7 +286,7 @@ function contact(d) {
 
   return `  <section class="section section--contact" id="contact" data-section="Contact">
     <div class="wrap">
-${sectionHead('05', 'Contact')}
+${sectionHead('Contact')}
       <div class="contact-grid">
         <p class="contact-lede">${esc(b.contactNote)}</p>
         <ul class="contact-list">
@@ -406,7 +392,7 @@ function main() {
     .slice(0, 300);
 
   const favicon = encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#9c5f2b"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">${d.basics.initials}</text></svg>`
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#6f3d1d"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="600" fill="#fbf4e9" text-anchor="middle">${d.basics.initials}</text></svg>`
   );
 
   const ogImage = d.basics.photo

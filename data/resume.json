@@ -4,7 +4,7 @@
   "site": {
     "url": "https://aidanmclean.github.io",
     "repo": "https://github.com/aidanmclean/aidanmclean.github.io",
-    "themeColor": "#13100b",
+    "themeColor": "#19110b",
     "lastUpdated": "October 2026"
   },
 
@@ -16,9 +16,9 @@
     "email": "aidanmclean7030@yahoo.com",
     "phone": "",
     "status": [
-      "Co-Founder & Technical Lead @ Endnote Records"
+      "Co-Founder & Technical Lead at Endnote Records"
     ],
-    "lede": "I am a Full-Stack Developer, and I enjoy designing and developing solutions based on real needs. My most recent projects are a research platform at McMaster where researchers benchmark AI battery models, and a full-stack e-commerce platform for an independent record label.",
+    "lede": "I am a software developer with experience in developing full-stack web applications. Most recently: the storefront and payments platform for an independent record label, a real-time multiplayer party game, and a platform where battery researchers benchmark State-of-Charge models.",
     "photo": "assets/files/headshot.jpeg",
     "photoAlt": "Aidan McLean",
     "resumePdf": "assets/files/Aidan-McLean-Resume.pdf",
@@ -148,7 +148,9 @@
         "Implemented a server-timed, animated team draft driven by Durable Object alarms. It balances teams by self-reported skill (seat simulation, greedy placement, then pair swaps) while every draw stays random through crypto.getRandomValues. The turn engine covers a 3-2-1 countdown, pause and resume, undo and redo in review, leftover time carried into the next round, turn swaps, and a clock that pauses when the describer disconnects.",
         "Tested the reducer with fast-check property tests that fire hundreds of random action sequences and junk messages at it. They assert it never throws, never mutates its frozen input, and never breaks an invariant. Two Node WebSocket end-to-end suites (70 and 34 checks) run against a local Wrangler worker in GitHub Actions, alongside Biome, type checking and a production build."
       ],
-      "links": []
+      "links": [
+        { "label": "3mormonnuns.app", "url": "https://3mormonnuns.app" }
+      ]
     },
     {
       "name": "SoC Model Benchmarking Platform",
@@ -165,7 +167,9 @@
         "Built admin tools to ban users and revoke their sessions, with the session cookie cache shortened to 20 seconds so revocations take effect almost immediately, and delivered results by email and live in-app notifications over Server-Sent Events.",
         "Added structured Winston logging with daily-rotated error logs, and deployed the platform on Compute Canada's OpenStack cloud with Docker Compose, NGINX, PM2, and SSL/TLS."
       ],
-      "links": []
+      "links": [
+        { "label": "batterysocbenchmark.ca", "url": "https://batterysocbenchmark.ca" }
+      ]
     }
   ],
 

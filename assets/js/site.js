@@ -51,9 +51,8 @@
   const themeBtn = $('#theme-toggle');
   if (themeBtn) themeBtn.addEventListener('click', () => toggleTheme());
 
-  /* ------------------------------------------------------- scroll: progress */
+  /* ------------------------------------------------- scroll: topbar + spy */
 
-  const bar = $('.progress i');
   const topbar = $('#topbar');
   const sections = $$('main section[id]');
   const navLinks = $$('.nav a[data-nav]');
@@ -64,8 +63,6 @@
     ticking = true;
     requestAnimationFrame(() => {
       const y = window.scrollY;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (bar) bar.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : '0');
       if (topbar) topbar.classList.toggle('stuck', y > 12);
 
       // scroll-spy: the last section whose top has passed under the header
@@ -82,28 +79,6 @@
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll, { passive: true });
   onScroll();
-
-  /* ------------------------------------------------------ scroll: reveal in */
-
-  const reveals = $$('.reveal');
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    reveals.forEach((el) => el.classList.add('in'));
-  } else {
-    const io = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          e.target.classList.add('in');
-          obs.unobserve(e.target);
-        });
-      },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
-    );
-    reveals.forEach((el, i) => {
-      el.style.setProperty('--d', Math.min(i, 6) * 70 + 'ms');
-      io.observe(el);
-    });
-  }
 
   /* ------------------------------------------------- collapsible tag lists */
 
@@ -131,8 +106,8 @@
   const filterbar = document.createElement('div');
   filterbar.className = 'filterbar';
   filterbar.innerHTML =
-    '<span>filter <b class="f-tag"></b> <span class="count"></span></span>' +
-    '<button type="button">clear</button>';
+    '<span>Filter <b class="f-tag"></b> <span class="count"></span></span>' +
+    '<button type="button">Clear</button>';
   document.body.appendChild(filterbar);
   filterbar.querySelector('button').addEventListener('click', () => applyFilter(null));
 
