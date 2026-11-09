@@ -16,8 +16,7 @@
     "email": "aidanmclean7030@yahoo.com",
     "phone": "",
     "status": [
-      "Co-Founder & Technical Lead @ Endnote Records",
-      "Research Assistant @ McMaster Faculty of Engineering"
+      "Co-Founder & Technical Lead @ Endnote Records"
     ],
     "lede": "I am a Full-Stack Developer, and I enjoy designing and developing solutions based on real needs. My most recent projects are a research platform at McMaster where researchers benchmark AI battery models, and a full-stack e-commerce platform for an independent record label.",
     "photo": "assets/files/headshot.jpeg",
@@ -58,7 +57,7 @@
       "position": "Research Assistant & Full-Stack Developer",
       "location": "Hamilton, ON",
       "start": "May 2026",
-      "end": "Present",
+      "end": "October 2026",
       "tech": ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "SQL", "Drizzle ORM", "REST APIs", "Docker", "NGINX", "Linux", "PM2", "OpenStack", "SSL/TLS", "Git", "Docker Compose", "better-auth", "Schema design", "Session auth & RBAC", "Tailwind CSS", "shadcn/ui"],
       "highlights": [
         "Developed a full-stack benchmarking platform for battery State-of-Charge estimation algorithms, where submitted models are evaluated in isolated Docker containers and ranked across 18+ performance metrics.",
@@ -133,6 +132,23 @@
       "links": [
         { "label": "endnoterecords.ca", "url": "https://endnoterecords.ca" }
       ]
+    },
+    {
+      "name": "Real-Time Multiplayer Party Game",
+      "role": "Lead Architect & Developer",
+      "org": "3 Mormon Nuns",
+      "year": "2026",
+      "tech": ["TypeScript", "React", "Next.js", "Cloudflare Workers", "Durable Objects", "WebSockets", "PartyServer", "Zod", "Vitest", "fast-check", "pnpm", "Biome", "GitHub Actions", "Real-time systems", "State machines", "Property-based testing"],
+      "summary": "A real-time, Jackbox-style party game in the style of Monikers or Fishbowl: a TV hosts the game, and players join on their phones by QR code or a 4-letter room code. It's a pnpm monorepo with a Next.js 16 client and a lobby server on Cloudflare Workers and Durable Objects, which talk over WebSockets (PartyServer). A shared TypeScript game engine runs the rules.",
+      "detail": "Every game rule lives in a pure, deterministic reducer. The Durable Object is a thin shell around it: it validates each message, applies it, checks the state, saves it, then sends each player their own view. Started in October 2026 with two contributors, with 113 Vitest tests and 104 end-to-end WebSocket checks running in CI, and 65 recorded design decisions documenting it.",
+      "highlights": [
+        "Designed a server-authoritative architecture in which each lobby is a single Durable Object. Clients send only intents over a versioned, Zod-validated WebSocket protocol, and the server owns the clock, randomness, scores and hidden phrases. Heartbeat presence sweeps and token-based rejoin let phones survive sleep, network switches and refreshes without losing their seat.",
+        "Built a validation pipeline for every inbound message: size check, token-bucket rate limit, JSON parse, then a strict schema. The acting player comes from the socket binding, never the message body, and every action is authorized by role and game phase. Each transition passes a full invariant check before it's saved and broadcast, and a bad transition is rejected with the previous state kept.",
+        "Enforced per-player secrecy with a projection layer that builds each client's view field by field. Session tokens, the phrase being described, a moderated player's identity and pending phrases, and skill ratings reach only the players allowed to see them. Tests assert that no view leaks them.",
+        "Implemented a server-timed, animated team draft driven by Durable Object alarms. It balances teams by self-reported skill (seat simulation, greedy placement, then pair swaps) while every draw stays random through crypto.getRandomValues. The turn engine covers a 3-2-1 countdown, pause and resume, undo and redo in review, leftover time carried into the next round, turn swaps, and a clock that pauses when the describer disconnects.",
+        "Tested the reducer with fast-check property tests that fire hundreds of random action sequences and junk messages at it. They assert it never throws, never mutates its frozen input, and never breaks an invariant. Two Node WebSocket end-to-end suites (70 and 34 checks) run against a local Wrangler worker in GitHub Actions, alongside Biome, type checking and a production build."
+      ],
+      "links": []
     },
     {
       "name": "SoC Model Benchmarking Platform",
